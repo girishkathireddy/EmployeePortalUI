@@ -1,7 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-const routes: Routes = [];
+const routes: Routes = [{
+  path: 'dashboard',
+  loadChildren:'../app/moon-portal/moon-portal.module#MoonPortalModule'
+},{
+  path:'**',
+  redirectTo:'dashboard'
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

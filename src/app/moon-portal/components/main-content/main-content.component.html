@@ -1,0 +1,44 @@
+
+
+<mat-toolbar>
+  <h3>Employee List</h3>
+  <div class="menu-bar">
+        <button mat-button (click)="saveBtnHanlder()">
+                New Employee
+        </button>
+  </div>
+</mat-toolbar>
+
+<div class="mat-elevation-z8"  *ngIf="isDataLoaded">
+<table mat-table [dataSource]="dataSource">
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Employee Name </th>
+      <td mat-cell *matCellDef="let employee"> {{employee.firstName}} {{employee.lastName}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="hiredate">
+      <th mat-header-cell *matHeaderCellDef> Hire Date </th>
+      <td mat-cell *matCellDef="let employee"> {{employee.hireDate | date}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let employee"> {{employee.email}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="salary">
+        <th mat-header-cell *matHeaderCellDef> Salary </th>
+        <td mat-cell *matCellDef="let employee"> {{employee.salary}} </td>
+      </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns; let employee" [routerLink]="['view',employee.id]"></tr>
+  </table>
+
+  <mat-paginator [pageSize]="10" [pageSizeOptions]="[10,20]" [length]="dataSource.length" > </mat-paginator>
+</div>

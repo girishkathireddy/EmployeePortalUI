@@ -1,0 +1,47 @@
+<mat-card>
+  <h3>Add Employee</h3>
+  <form class="form-container" [formGroup]="employeeForm" novalidate (ngSubmit)="onSubmit()">
+      <mat-form-field color="primary">
+        <input matInput placeholder="First Name" formControlName="firstName">
+        <mat-error *ngIf="employeeForm.controls.firstName.invalid && employeeForm.controls.firstName.touched"> First Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field color="primary">
+          <input matInput placeholder="Last Name" formControlName="lastName">
+          <mat-error *ngIf="employeeForm.controls.lastName.invalid && employeeForm.controls.lastName.touched"> Last Name is required</mat-error>
+      </mat-form-field>
+      <mat-form-field color="primary">
+          <input matInput placeholder="Role" formControlName="title">
+          <mat-error *ngIf="employeeForm.controls.title.invalid && employeeForm.controls.title.touched"> Role is required</mat-error>
+      </mat-form-field>
+      <mat-form-field color="primary">
+          <input matInput placeholder="Salary($)" type="number" formControlName="salary">
+          <mat-error *ngIf="employeeForm.controls.salary.invalid && employeeForm.controls.salary.touched"> Salary is required</mat-error>
+      </mat-form-field>
+      <mat-form-field color="primary">
+          <input matInput [matDatepicker]="date" placeholder="Choose the Hire date" formControlName="hireDate">
+          <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+          <mat-datepicker #date></mat-datepicker>
+          <mat-error *ngIf="employeeForm.controls.hireDate.invalid && employeeForm.controls.hireDate.touched"> Date is required</mat-error>
+      </mat-form-field>
+      <mat-form-field color="primary">
+          <input matInput placeholder="Email" type="email"  formControlName="email">
+          <mat-error *ngIf="employeeForm.controls.email.invalid && employeeForm.controls.email.touched"> Email is required</mat-error>
+      </mat-form-field>
+      <mat-form-field color="primary">
+          <input matInput placeholder="Contact Number" formControlName="phoneNumber">
+          <mat-error *ngIf="employeeForm.controls.phoneNumber.invalid && employeeForm.controls.phoneNumber.touched"> item is required</mat-error>
+      </mat-form-field>
+      <mat-form-field color="primary">
+          <input matInput placeholder="Address" formControlName="address">
+          <mat-error *ngIf="employeeForm.controls.address.invalid && employeeForm.controls.address.touched"> Address is required</mat-error>
+      </mat-form-field>    
+      <mat-form-field color="primary">
+          <input matInput placeholder="Zip Code" formControlName="zipcode">
+          <mat-error *ngIf="employeeForm.controls.zipcode.invalid && employeeForm.controls.zipcode.touched"> Zipcode is required</mat-error>
+      </mat-form-field>    
+      <div>
+          <button mat-raised-button [disabled]="!employeeForm.valid" type="submit" color="primary">Save</button>
+          <button mat-raised-button type="reset" (click)="toDashBoard()">Cancel</button>
+        </div>
+    </form>
+</mat-card>
